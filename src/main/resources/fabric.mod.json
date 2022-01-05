@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "id": "koroworld",
+  "version": "${version}",
+  "name": "KoroWorld-MinecraftSupportMod",
+  "description": "KoroWorld群组服务器所使用的连接服务器核心模组。",
+  "authors": [
+    "koro"
+  ],
+  "contact": {
+    "website": "https://korostudio.cn"
+  },
+  "license": "MIT",
+  "icon": "assets/koroworld/icon.png",
+  "environment": "server",
+  "entrypoints": {
+    "server": [
+      "cn.korostudio.koroworld.Koroworld"
+    ],
+    "main": [
+      "cn.korostudio.koroworld.KoroWorldMain"
+    ]
+  },
+  "mixins": [
+    "koroworld.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.12.12",
+    "fabric": "*",
+    "minecraft": "1.18.1"
+  }
+}
