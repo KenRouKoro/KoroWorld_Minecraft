@@ -1,37 +1,36 @@
 package cn.korostudio.koroworld.Events;
 
+import cn.hutool.core.thread.ThreadUtil;
 import cn.hutool.http.HttpException;
 import cn.hutool.http.HttpUtil;
 import cn.hutool.json.JSONArray;
 import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
-import cn.korostudio.koroworld.Koroworld;
+import cn.korostudio.koroworld.KoroWorldMain;
+import cn.korostudio.koroworld.KoroWorldServer;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import net.fabricmc.fabric.api.networking.v1.PacketSender;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.StringNbtReader;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.network.ServerPlayNetworkHandler;
-import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.collection.DefaultedList;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.HashMap;
 import java.util.List;
-import java.util.Objects;
 
 public class LoadEvent {
     static protected Logger logger = LoggerFactory.getLogger("KoroWorld-ITSY-LoadEvent");
 
     static public void onSpawn(ServerPlayNetworkHandler handler, PacketSender sender, MinecraftServer server) {
-        new Thread(() -> {
+        ThreadUtil.execute(() -> {
 
             PlayerEntity player = handler.player;
-            Koroworld.sendMessageServer(handler.getPlayer(), "正在同步您的物品......");
+            KoroWorldServer.sendMessageServer(handler.getPlayer(), "正在同步您的物品......");
             PlayerInventory inventory = player.getInventory();
             String lock=null;
             boolean unlock = false;
@@ -40,13 +39,13 @@ public class LoadEvent {
                 index++;
                 if(index>30){
                     logger.info("30 attempts have been made. It is judged that the data is corrupt. Skip the lock check.");
-                    break;
+                    return;
                 }
                 try {
                     HashMap<String, Object> keyPostMap = new HashMap<>();
                     keyPostMap.put("key", "get");
                     keyPostMap.put("UUID", player.getUuidAsString());
-                    lock = HttpUtil.post(Koroworld.setting.getStr("server", "http://127.0.0.1:18620") + "/item/lock", keyPostMap);
+                    lock = HttpUtil.post(KoroWorldMain.setting.getStr("server", "http://127.0.0.1:18620") + "/item/lock", keyPostMap);
                 } catch (HttpException e) {
                     lock = "error";
                 }
@@ -66,7 +65,6 @@ public class LoadEvent {
                 }else {
                     return;
                 }
-
             }
 
             logger.info("Player:" + player.getName().getString() + " UUID is :" + player.getUuidAsString() + " Data is downloading from ServerCore.");
@@ -75,7 +73,7 @@ public class LoadEvent {
             paramMap.put("UUID", player.getUuidAsString());
             String result = null;
             try {
-                result = HttpUtil.post(Koroworld.setting.getStr("server","http://127.0.0.1:18620") + "/item/download", paramMap);
+                result = HttpUtil.post(KoroWorldMain.setting.getStr("server","http://127.0.0.1:18620") + "/item/download", paramMap);
             } catch (HttpException e) {
                 e.printStackTrace();
                 return;
@@ -119,7 +117,7 @@ public class LoadEvent {
                 }
             }
             logger.info("Player:" + player.getName().getString() + " UUID is :" + player.getUuidAsString() + " Data download from ServerCore Finish.");
-            Koroworld.sendMessageServer(handler.getPlayer(), "同步完毕~");
-        }).start();
+            KoroWorldServer.sendMessageServer(handler.getPlayer(), "同步完毕~");
+        });
     }
 }

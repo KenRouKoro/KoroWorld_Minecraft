@@ -12,13 +12,16 @@
   },
   "license": "MIT",
   "icon": "assets/koroworld/icon.png",
-  "environment": "server",
+  "environment": "*",
   "entrypoints": {
     "server": [
-      "cn.korostudio.koroworld.Koroworld"
+      "cn.korostudio.koroworld.KoroWorldServer"
     ],
     "main": [
       "cn.korostudio.koroworld.KoroWorldMain"
+    ],
+    "client": [
+      "cn.korostudio.koroworld.KoroWorldClient"
     ]
   },
   "mixins": [

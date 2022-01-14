@@ -19,5 +19,4 @@ public class PlayerPOSData {
         this.UUID=UUID;
         this.world= world;
     }
-
 }
