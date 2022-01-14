@@ -27,6 +27,7 @@ public class LoadEvent {
     static protected Logger logger = LoggerFactory.getLogger("KoroWorld-ITSY-LoadEvent");
 
     static public void onSpawn(ServerPlayNetworkHandler handler, PacketSender sender, MinecraftServer server) {
+        if(KoroWorldMain.setting.getStr("ITSYEnable","true").equals("true"))
         ThreadUtil.execute(() -> {
 
             PlayerEntity player = handler.player;
