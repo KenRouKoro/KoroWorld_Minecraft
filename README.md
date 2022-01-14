@@ -1,5 +1,6 @@
 # KoroWorld_Minecraft
 **用于与KoroWorld核心提供Minecraft支持的FabricMod**
+本mod以MIT协议开源。
 ## 功能
 1. 跨服务器同步玩家背包
 2. 跨服务器的驱动器
