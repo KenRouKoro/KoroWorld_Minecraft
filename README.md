@@ -23,6 +23,8 @@ servername =
 server = 
 //核心ws连接（注意要带ws://）
 wsserver = 
+//背包同步开关（false关闭，true开启，默认开启）
+ITSYEnable = 
 ```
 
 ps: 跨服驱动器材质是作者自己画的不是ae2的！！！！
