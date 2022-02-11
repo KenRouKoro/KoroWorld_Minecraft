@@ -1,5 +1,6 @@
 package cn.korostudio.koroworld.command;
 
+import cn.hutool.core.thread.ThreadUtil;
 import cn.hutool.http.HttpException;
 import cn.hutool.http.HttpUtil;
 import cn.hutool.json.JSONArray;
@@ -43,6 +44,13 @@ public class KoroCommand {
         server.register(literal("update").executes(KoroCommand::update).then(CommandManager.argument("player", StringArgumentType.string())));
         server.register(literal("updateAll").executes(KoroCommand::updateAll).then(CommandManager.argument("option", StringArgumentType.string())));
         server.register(literal("connectWS").executes(KoroCommand::connectWS).then(CommandManager.argument("option", StringArgumentType.string())));
+        server.register(literal("broadcast").executes(KoroCommand::broadcast).then(CommandManager.argument("option", StringArgumentType.string())));
+    }
+
+    static public int broadcast( CommandContext<ServerCommandSource> server){
+        String str =  server.getInput();
+        System.out.println(str);
+        return 1;
     }
 
     static public int backdeath (CommandContext<ServerCommandSource> server){
@@ -82,19 +90,26 @@ public class KoroCommand {
             return 1;
         }
         ServerPlayerEntity finalServerPlayer = serverPlayer;
-        new Thread(() -> {
+        ThreadUtil.execute(() -> {
             KoroWorldServer.sendMessage(finalServerPlayer,"正在上传您的数据......");
             PlayerEntity player = finalServerPlayer.getInventory().player;
             upToServer(player, logger);
             KoroWorldServer.sendMessage(finalServerPlayer,"数据上传完成！");
-        }).start();
+        });
 
         return 1;
     }
 
     public static int updateAll(CommandContext<ServerCommandSource> server){
         List<ServerPlayerEntity>players =  server.getSource().getServer().getPlayerManager().getPlayerList();
-
+        ThreadUtil.execute(() -> {
+            for(ServerPlayerEntity finalServerPlayer:players) {
+                KoroWorldServer.sendMessage(finalServerPlayer, "正在上传您的数据......");
+                PlayerEntity player = finalServerPlayer.getInventory().player;
+                upToServer(player, logger);
+                KoroWorldServer.sendMessage(finalServerPlayer, "数据上传完成！");
+            }
+        });
         return 1;
     }
 

@@ -36,9 +36,8 @@ public class KoroWorldMain implements ModInitializer {
 
     @Override
     public void onInitialize() {
-        setting = new Setting(FileUtil.touch("./koroworld/config/koroworld.setting"), CharsetUtil.CHARSET_UTF_8,true);
+        setting = new Setting(FileUtil.touch(System.getProperty("user.dir")+"/koroworld/config/koroworld.setting"), CharsetUtil.CHARSET_UTF_8,true);
         register();
-
         ServerLifecycleEvents.SERVER_STARTED.register(minecraftServer -> {
             server = minecraftServer;
         });

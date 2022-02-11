@@ -50,7 +50,7 @@ public class KoroWorldServer implements DedicatedServerModInitializer {
 
 
         logger.info("Load Config.");
-        logger.info("Config File: "+FileUtil.touch("./koroworld/config/koroworld.setting").getAbsolutePath().toString());
+        logger.info("Config File: "+FileUtil.touch(System.getProperty("user.dir")+"/koroworld/config/koroworld.setting").getAbsolutePath().toString());
         serverNameStr = setting.getStr("servername","KoroWorld");
         logger.info("Register Events.");
         registerEvents();
@@ -97,7 +97,7 @@ public class KoroWorldServer implements DedicatedServerModInitializer {
         ThreadUtil.execute(()->{
             List<ServerPlayerEntity> players = server.getPlayerManager().getPlayerList();
             for(ServerPlayerEntity player:players){
-                sendMessage(player,"§a["+serverName+"] §r"+text);
+                sendMessage(player,"§r§a["+serverName+"§a]§r§r "+"§f"+text);
             }
         });
     }
