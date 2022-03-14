@@ -116,13 +116,12 @@ public class KoroCommand {
     public static int connectWS(CommandContext<ServerCommandSource> server){
         try {
             if (KoroWorldServer.serverWSClient.isOpen())return 1;
-            String wsURL = KoroWorldMain.setting.getStr("server", "ws://127.0.0.1:18620")+"/message/ws"+"?token="+ KoroWorldServer.serverNameStr;
+            String wsURL = KoroWorldMain.setting.getStr("wsserver", "ws://127.0.0.1:18620")+"/message/ws"+"?token="+ KoroWorldServer.serverNameStr;
             URI uri = new URI(wsURL);
             KoroWorldServer.serverWSClient = new ServerWSClient(uri);
         } catch (URISyntaxException e) {
             logger.error("WS Connect FAIL!");
         }
-        //serverWSClient.addHeader("token",serverNameStr);
         KoroWorldServer.serverWSClient.connect();
 
         return 1;

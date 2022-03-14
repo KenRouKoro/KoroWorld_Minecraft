@@ -10,7 +10,6 @@ public interface PlayerDeathEvent {
             (listeners) -> (player) -> {
                 for (PlayerDeathEvent listener : listeners) {
                     ActionResult result = listener.interact(player);
-
                     if(result != ActionResult.PASS) {
                         return result;
                     }
