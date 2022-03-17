@@ -49,6 +49,7 @@ public class MessageTool {
         String sendStr = StrUtil.format(chatTemplate,value);
         sendMessage(player,sendStr);
     }
+
     public static void sendCharMessageAll(String text,String servername,String playername){
         HashMap <String,String> value = new HashMap<>();
         value.put("player",playername);
