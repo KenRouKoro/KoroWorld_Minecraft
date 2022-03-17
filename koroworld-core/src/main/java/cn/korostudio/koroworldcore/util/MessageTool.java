@@ -100,7 +100,7 @@ public class MessageTool {
             for(ServerPlayerEntity player1:players){
                 HashMap <String,String> value = new HashMap<>();
                 value.put("now-player",player1.getName().asString());
-                sendSystemMessage(player,StrUtil.format(text,value),servername);
+                sendSystemMessage(player1,player.getName().asString(),StrUtil.format(text,value),servername);
             }
         });
     }
