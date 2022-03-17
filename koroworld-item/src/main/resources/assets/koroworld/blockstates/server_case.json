@@ -1,0 +1,5 @@
+{
+  "variants": {
+    "": { "model": "koroworld:block/server_case" }
+  }
+}

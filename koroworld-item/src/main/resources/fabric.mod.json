@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "id": "koroworld-item",
+  "version": "${version}",
+  "name": "Koroworld Item",
+  "description": "KoroWorld 物品同步系统",
+  "authors": [
+    "KenRouKoro"
+  ],
+  "contact": {
+    "website": "https://korostudio.cn",
+    "homepage": "https://korostudio.cn",
+    "sources": "https://github.com/KenRouKoro/KoroWorld_Minecraft",
+    "issues": "https://github.com/KenRouKoro/KoroWorld_Minecraft/issues"
+  },
+  "license": "MIT",
+  "icon": "assets/koroworld/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "cn.korostudio.koroworlditem.KoroworldItem"
+    ],
+    "server": [
+      "cn.korostudio.koroworlditem.KoroworldItemServer"
+    ]
+  },
+  "mixins": [
+    "koroworld-item.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.13.3",
+    "fabric": "*",
+    "minecraft": "1.18.x",
+    "koroworld-core":">=1.0"
+  }
+}

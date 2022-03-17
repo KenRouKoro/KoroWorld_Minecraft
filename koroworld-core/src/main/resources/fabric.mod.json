@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "id": "koroworld-core",
+  "version": "${version}",
+  "name": "Koroworld Core",
+  "description": "KoroWorld 核心模组",
+  "authors": [
+    "KenRouKoro"
+  ],
+  "contact": {
+    "website": "https://korostudio.cn",
+    "homepage": "https://korostudio.cn",
+    "sources": "https://github.com/KenRouKoro/KoroWorld_Minecraft",
+    "issues": "https://github.com/KenRouKoro/KoroWorld_Minecraft/issues"
+  },
+  "license": "MIT",
+  "icon": "assets/koroworld/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "client": [
+      "cn.korostudio.koroworldcore.client.KoroworldCoreClient"
+    ],
+    "main": [
+      "cn.korostudio.koroworldcore.KoroworldCore"
+    ]
+  },
+  "mixins": [
+    "koroworld-core.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.13.3",
+    "fabric": "*",
+    "minecraft": "1.18.x"
+  }
+}

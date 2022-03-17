@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "WIW",
+    "IRI",
+    "WIW"
+  ],
+  "key": {
+    "W": {
+      "item": "minecraft:obsidian"
+    },
+    "R": {
+      "item": "minecraft:ender_eye"
+    },
+    "I": {
+      "item": "minecraft:iron_ingot"
+    }
+  },
+  "result": {
+    "item": "koroworld:server_case",
+    "count": 2
+  }
+}
