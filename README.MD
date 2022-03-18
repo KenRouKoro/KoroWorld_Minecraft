@@ -7,6 +7,10 @@
 2. 自定义的聊天模板配置与跨服务器聊天同步
 3. 玩家于服务器状态提示自定义
 4. spawn和backdeath实用指令
+## 当前模块
+1. koroworld-core 科洛的服务器支持核心
+2. koroworld-item 科洛的服务器支持物品同步系统
+3. koroworld-message 科洛的服务器支持消息同步系统
 ## 使用方法
 
 前往Github下载发行版，加入mods文件夹即可。
