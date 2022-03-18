@@ -51,7 +51,7 @@ public class KoroworldCore implements ModInitializer {
         register();
     }
 
-    protected static void loadSetting(){
+    public static void loadSetting(){
         MessageTool.setChatTemplate(setting.getStr("ChatTemplate","[{time}][{server}][{player}] {text}"));
         MessageTool.setTimeTemplate(setting.getStr("TimeTemplate","yyyy-MM-dd HH:mm:ss"));
         MessageTool.setSystemTemplate(setting.getStr("SystemTemplate","[{system}] {text}"));

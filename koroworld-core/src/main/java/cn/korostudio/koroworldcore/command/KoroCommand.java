@@ -28,7 +28,13 @@ public class KoroCommand {
         //option
         server.register(literal("backdeath").executes(KoroCommand::backDeath).then(CommandManager.argument("player", StringArgumentType.string())));
         server.register(literal("spawn").executes(KoroCommand::spawn).then(CommandManager.argument("player", StringArgumentType.string())));
+        server.register(literal("corereload").requires(serverCommandSource -> serverCommandSource.hasPermissionLevel(2)).executes(KoroCommand::corereload).then(CommandManager.argument("player", StringArgumentType.string())));
     }
+    static public int corereload (CommandContext<ServerCommandSource> server){
+        KoroworldCore.loadSetting();
+        return 1;
+    }
+
 
     static public int backDeath (CommandContext<ServerCommandSource> server){
         ServerPlayerEntity player = null;

@@ -7,7 +7,7 @@ import net.minecraft.util.ActionResult;
 
 public class ChatEvent {
     public static ActionResult onChat(ServerPlayerEntity player,String text){
-        MessageTool.sendCharMessage(player,text, KoroworldCore.getServerName(),player.getName().asString());
+        MessageTool.sendCharMessageAll(text, KoroworldCore.getServerName(),player.getName().asString());
         return ActionResult.PASS;
     }
 }
