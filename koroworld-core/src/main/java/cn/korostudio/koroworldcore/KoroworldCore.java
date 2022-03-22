@@ -1,7 +1,10 @@
 package cn.korostudio.koroworldcore;
 
 import cn.hutool.core.io.FileUtil;
+import cn.hutool.core.io.file.FileReader;
 import cn.hutool.core.util.CharsetUtil;
+import cn.hutool.json.JSONObject;
+import cn.hutool.json.JSONUtil;
 import cn.hutool.setting.Setting;
 import cn.korostudio.koroworldcore.command.KoroCommand;
 import cn.korostudio.koroworldcore.data.Data;
@@ -19,6 +22,7 @@ import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
 
 public class KoroworldCore implements ModInitializer {
 
@@ -49,11 +53,15 @@ public class KoroworldCore implements ModInitializer {
         });
         showLogo();
         register();
+        MessageTool.initTemplateValueMap();
     }
 
     public static void loadSetting(){
+        setting = new Setting(FileUtil.touch(System.getProperty("user.dir")+"/koroworld/config/core.setting"), CharsetUtil.CHARSET_UTF_8,true);
         MessageTool.setChatTemplate(setting.getStr("ChatTemplate","[{time}][{server}][{player}] {text}"));
+        MessageTool.setOpChatTemplate(setting.getStr("OPChatTemplate","[{time}][管理员][{server}][{player}] {text}"));
         MessageTool.setTimeTemplate(setting.getStr("TimeTemplate","yyyy-MM-dd HH:mm:ss"));
+        MessageTool.setDateTemplate(setting.getStr("DateTemplate","yyyy年MM月dd日"));
         MessageTool.setSystemTemplate(setting.getStr("SystemTemplate","[{system}] {text}"));
         systemName = setting.getStr("SystemName","KoroWorld");
         serverName = setting.getStr("ServerName","KoroWorld");
@@ -61,6 +69,9 @@ public class KoroworldCore implements ModInitializer {
         Data.serverConnectBanner = setting.getStr("ConnectBanner","{player}来了喵~");
         Data.serverDisConnectBanner = setting.getStr("DisconnectBanner","{player}跑掉喵~");
         Data.serverConnectBannerForPlayer = setting.getStr("ConnectBannerForPlayer","欢迎来到{server}服务器~");
+
+        Data.saveTeleport = setting.getBool("SaveTeleportPOS",true);
+        DeathEvent.saveDeath = setting.getBool("SaveDeathPOS",true);
     }
 
     protected void register(){

@@ -7,7 +7,7 @@ import java.util.HashMap;
 
 @Getter
 public class PlayerPOSData {
-    static public HashMap<String,PlayerPOSData> deathMap = new HashMap<>();
+    static public HashMap<String,PlayerPOSData> teleportMap = new HashMap<>();
     protected double x,y,z;
     protected String UUID;
     protected ServerWorld world;

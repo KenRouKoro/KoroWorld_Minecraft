@@ -56,7 +56,7 @@ public class ServerWSClient extends WebSocketClient {
     @Override
     public void onMessage(String message) {
         PlayerChatData chatData = JSONUtil.toBean(message, PlayerChatData.class);
-        if(chatData.getGroup().equals(MessageSystemData.MessageGroup)){
+        if(!chatData.getGroup().equals(MessageSystemData.MessageGroup)){
             if(!chatData.isHighestAuthority()){
                 return;
             }
@@ -64,7 +64,7 @@ public class ServerWSClient extends WebSocketClient {
         if(chatData.isSystem()){
             MessageTool.sendSystemMessageAll(chatData.getMessage(),chatData.getServer());
         } else{
-            MessageTool.sendCharMessageAll(chatData.getMessage(),chatData.getServer(),chatData.getName());
+            MessageTool.sendCharMessageAll(chatData.getMessage(),chatData.getName(),chatData.getServer());
         }
         logger.info(chatData.getMessage());
     }

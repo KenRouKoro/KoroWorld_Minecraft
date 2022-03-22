@@ -1,5 +1,6 @@
 package cn.korostudio.koroworldmessage;
 
+import cn.hutool.core.codec.Base62;
 import cn.hutool.core.io.FileUtil;
 import cn.hutool.core.util.CharsetUtil;
 import cn.hutool.setting.Setting;
@@ -42,7 +43,7 @@ public class KoroworldMessageServer implements DedicatedServerModInitializer {
 
     public static void connectWSServer(){
         try {
-            String wsURL = MessageSystemData.WSServer+"/message/ws"+"?token="+ KoroworldCore.getServerName();
+            String wsURL = MessageSystemData.WSServer+"/message/ws"+"?token="+ Base62.encode(KoroworldCore.getServerName());
             URI uri = new URI(wsURL);
             serverWSClient = new ServerWSClient(uri);
             serverWSClient.connect();

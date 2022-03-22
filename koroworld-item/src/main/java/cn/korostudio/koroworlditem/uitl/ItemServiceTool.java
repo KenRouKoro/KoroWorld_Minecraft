@@ -102,7 +102,7 @@ public class ItemServiceTool {
         }
     }
     public static void downloadForServer(ServerPlayerEntity player, Logger logger){
-        MessageTool.sendSystemMessage(player, "正在同步您的物品......", KoroworldCore.getServerName());
+        MessageTool.sendSystemMessage(player, "正在同步您的物品......");
         PlayerInventory inventory = player.getInventory();
         String lock=null;
         boolean unlock = false;
@@ -191,6 +191,6 @@ public class ItemServiceTool {
             }
         }
         logger.info("Player:" + player.getName().getString() + " UUID is :" + player.getUuidAsString() + " Data download from ServerCore Finish.");
-        MessageTool.sendSystemMessage(player, "同步完毕~",KoroworldCore.getServerName());
+        MessageTool.sendSystemMessage(player, "同步完毕~");
     }
 }

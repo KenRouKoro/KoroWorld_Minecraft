@@ -1,12 +1,9 @@
 {
   "required": true,
   "minVersion": "0.8",
-  "package": "cn.korostudio.koroworldcore.mixin",
+  "package": "cn.korostudio.koroworldexcommand.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
-    "PlayerChatMixin",
-    "PlayerDeathMixin",
-    "PlayerTeleportMixin"
   ],
   "client": [
   ],

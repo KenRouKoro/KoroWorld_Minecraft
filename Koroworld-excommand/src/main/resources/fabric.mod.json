@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "id": "koroworld-excommand",
+  "version": "${version}",
+  "name": "Koroworld Excommand",
+  "description": "科洛的服务器支持-更多指令",
+  "authors": [
+    "KenRouKoro"
+  ],
+  "contact": {
+    "website": "https://korostudio.cn"
+  },
+  "license": "MIT",
+  "icon": "assets/koroworld-excommand/icon.png",
+  "environment": "server",
+  "entrypoints": {
+    "client": [
+      "cn.korostudio.koroworldexcommend.client.KoroworldExcommendClient"
+    ],
+    "main": [
+      "cn.korostudio.koroworldexcommend.KoroworldExcommend"
+    ]
+  },
+  "mixins": [
+    "koroworld-excommand.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.13.3",
+    "fabric": "*",
+    "minecraft": "1.18.2"
+  }
+}

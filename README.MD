@@ -25,42 +25,49 @@ MCmod百科用户 科洛(koro) 即为本人，MCmod百科内容与此说明具�
 
 核心模块配置文件 core.setting
 ```properties
-// 系统名称，对应模板变量{system}
+# 系统名称，对应模板变量{system}
 SystemName =  
-//服务器名称，对应模板变量{server}
+#服务器名称，对应模板变量{server}
 ServerName =
-//以下为模板内容，具体格式请看后文的使用简介
-//时间模板，对应{time}模板变量提供的时间格式
+#以下为模板内容，具体格式请看后文的使用简介
+#时间模板，对应{time}模板变量提供的时间格式
 TimeTemplate =
-//聊天格式模板
+#聊天格式模板
 ChatTemplate =
-//系统信息模板
+#op聊天模板
+OPChatTemplate = 
+#系统信息模板
 SystemTemplate =
-//玩家上线广播模板
+#玩家上线广播模板
 ConnectBanner =
-//玩家上线信息模板
+#玩家上线信息模板
 ConnectBannerForPlayer =
-//玩家下线广播模板
+#玩家下线广播模板
 DisconnectBanner =
 ```
 
 物品同步系统模块配置文件 item.setting
 ```properties
-//跨服驱动器使能配置
+#跨服驱动器使能配置
 ServerCaseEnable =
-//背包同步系统使能配置
+#背包同步系统使能配置
 ItemSynchronizationEnable =
-//物品同步系统分组配置
+#物品同步系统分组配置
 ItemGroup =
-//服务核心Http地址配置
+#服务核心Http地址配置
 HttpServer =
 ```
 消息系统模块配置文件 message.setting
 ```properties
-//服务核心WS链接地址配置
+#服务核心WS链接地址配置
 WSServer =
-//消息系统分组配置
+#消息系统分组配置
 MessageGroup =
+```
+
+自定义指令使能配置文件 commandEN.setting
+```properties
+#在指令后+En就是对应指令配置节点，仅限玩家指令。
 ```
 ## 模板系统使用简介
 
@@ -78,6 +85,8 @@ MessageGroup =
 
 {time}当前时间，格式受时间模板控制
 
+{date}当前日期，格式受日期模板控制
+
 {system}系统名称
 
 {server}服务器名称
@@ -86,16 +95,18 @@ MessageGroup =
 
 {now-player}接受信息的玩家名，仅限于在群发信息中使用
 
+{number-of-player}当前在线玩家数
+
 消息系统支持Minecraft颜色代码。
 
 ## 版本对应列表
 
 1.17.2 -> 0.1Alpha
 
-1.18.1 -> 0.2.1Alpha - 0.2.4Alpha  |  1.0.0正式版
+1.18.1 -> 0.2.1Alpha - 0.2.4Alpha  |  1.0.0+
 
-1.18.2 -> 0.2.5Alpha+  |  1.0.0正式版
+1.18.2 -> 0.2.5Alpha+  |  1.0.0+
 
 1.19    -> 暂无计划
 
-0.2.xAlpha与0.1.xAlpha版本已停止维护。
+**0.2.xAlpha与0.1.xAlpha版本已停止维护。**

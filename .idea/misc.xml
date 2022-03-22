@@ -3,6 +3,7 @@
   <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="FrameworkDetectionExcludesConfiguration">
     <file type="web" url="file://$PROJECT_DIR$/koroworld-core" />
+    <file type="web" url="file://$PROJECT_DIR$/Koroworld-excommand" />
     <file type="web" url="file://$PROJECT_DIR$/koroworld-item" />
     <file type="web" url="file://$PROJECT_DIR$/koroworld-message" />
   </component>

@@ -2,6 +2,7 @@ package cn.korostudio.koroworlditem.command;
 
 import cn.hutool.core.thread.ThreadUtil;
 import cn.korostudio.koroworldcore.KoroworldCore;
+import cn.korostudio.koroworldcore.data.Data;
 import cn.korostudio.koroworldcore.util.MessageTool;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.StringArgumentType;
@@ -28,6 +29,9 @@ public class KoroItemCommand {
         server.register(literal("updateAll").requires(serverCommandSource -> serverCommandSource.hasPermissionLevel(2)).executes(KoroItemCommand::updateAll).then(CommandManager.argument("option", StringArgumentType.string())));
     }
     public static int update(CommandContext<ServerCommandSource> server){
+        if(!Data.commandEn.getBool("updateEn",true)){
+            return 1;
+        }
         ServerPlayerEntity serverPlayer = null;
         try {
             serverPlayer = server.getSource().getPlayer();
@@ -36,10 +40,10 @@ public class KoroItemCommand {
         }
         ServerPlayerEntity finalServerPlayer = serverPlayer;
         ThreadUtil.execute(() -> {
-            MessageTool.sendSystemMessage(finalServerPlayer,"正在上传您的数据......", KoroworldCore.getServerName());
+            MessageTool.sendSystemMessage(finalServerPlayer,"正在上传您的数据......");
             PlayerEntity player = finalServerPlayer.getInventory().player;
             upToServer(player, logger);
-            MessageTool.sendSystemMessage(finalServerPlayer,"数据上传完成！",KoroworldCore.getServerName());
+            MessageTool.sendSystemMessage(finalServerPlayer,"数据上传完成！");
         });
 
         return 1;
@@ -49,10 +53,10 @@ public class KoroItemCommand {
         List<ServerPlayerEntity> players =  server.getSource().getServer().getPlayerManager().getPlayerList();
         ThreadUtil.execute(() -> {
             for(ServerPlayerEntity finalServerPlayer:players) {
-                MessageTool.sendSystemMessage(finalServerPlayer, "正在上传您的数据......",KoroworldCore.getServerName());
+                MessageTool.sendSystemMessage(finalServerPlayer, "正在上传您的数据......");
                 PlayerEntity player = finalServerPlayer.getInventory().player;
                 upToServer(player, logger);
-                MessageTool.sendSystemMessage(finalServerPlayer, "数据上传完成！",KoroworldCore.getServerName());
+                MessageTool.sendSystemMessage(finalServerPlayer, "数据上传完成！");
             }
         });
         return 1;

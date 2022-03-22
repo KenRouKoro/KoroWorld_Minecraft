@@ -30,7 +30,7 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok:1.18.22'
     compileOnly 'org.projectlombok:lombok:1.18.22'
     implementation 'org.java-websocket:Java-WebSocket:1.5.2'
-    implementation 'cn.korostudio:koroworld-core:1.0.0'
+    implementation 'cn.korostudio:koroworld-core:1.1.0'
 }
 
 processResources {

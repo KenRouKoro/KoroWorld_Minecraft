@@ -9,7 +9,7 @@ import net.minecraft.server.network.ServerPlayNetworkHandler;
 
 public class PlayerConnectEvent {
     static public void onConnect(ServerPlayNetworkHandler handler, PacketSender sender, MinecraftServer server){
-        MessageTool.sendSystemMessageAll(handler.getPlayer(),Data.serverConnectBanner, KoroworldCore.getServerName());
-        MessageTool.sendSystemMessage(handler.getPlayer(),Data.serverConnectBannerForPlayer,KoroworldCore.getServerName());
+        MessageTool.sendSystemMessageAll(Data.serverConnectBanner,handler.player.getName().asString());
+        MessageTool.sendSystemMessage(handler.getPlayer(),Data.serverConnectBannerForPlayer);
     }
 }

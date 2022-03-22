@@ -9,6 +9,6 @@ import net.minecraft.server.network.ServerPlayNetworkHandler;
 
 public class PlayerDisconnectEvent {
     static public void onDisconnect(ServerPlayNetworkHandler handler, MinecraftServer server){
-        MessageTool.sendSystemMessageAll(handler.getPlayer(), Data.serverDisConnectBanner, KoroworldCore.getServerName());
+        MessageTool.sendSystemMessageAll( Data.serverDisConnectBanner, handler.getPlayer().getName().asString());
     }
 }

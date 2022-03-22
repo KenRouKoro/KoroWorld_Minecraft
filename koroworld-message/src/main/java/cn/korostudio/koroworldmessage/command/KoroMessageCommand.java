@@ -42,13 +42,13 @@ public class KoroMessageCommand {
                 KoroworldMessage.getLogger().error("WS已在链接。");
             }else{
                 try {
-                    MessageTool.sendSystemMessage(server.getSource().getPlayer(),"{player},WS已在链接中，请勿多次链接。",KoroworldCore.getServerName());
+                    MessageTool.sendSystemMessage(server.getSource().getPlayer(),"{player},WS已在链接中，请勿多次链接。");
                 } catch (CommandSyntaxException ignored) {
                 }
             }
         }else{
             try {
-                MessageTool.sendSystemMessage(server.getSource().getPlayer(),"{player},系统正在尝试链接WS。",KoroworldCore.getServerName());
+                MessageTool.sendSystemMessage(server.getSource().getPlayer(),"{player},系统正在尝试链接WS。");
             } catch (CommandSyntaxException ignored) {
             }
             KoroworldMessageServer.connectWSServer();

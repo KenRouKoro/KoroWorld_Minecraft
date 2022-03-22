@@ -218,7 +218,7 @@ public class ServerCaseBlockEntity extends BlockEntity implements ImplementedInv
                 }else if(lock.equals("null")){
                     return;
                 }else if(lock.equals("true")){
-                    logger.info("ServerCase UUID is:"+serverCaseBlockEntity.UUID+" id is:"+(serverCaseBlockEntity.mode-12)+" is lock,Try again in 0.2 seconds.");
+                    logger.debug("ServerCase UUID is:"+serverCaseBlockEntity.UUID+" id is:"+(serverCaseBlockEntity.mode-12)+" is lock,Try again in 0.2 seconds.");
                     try {
                         Thread.sleep(200);
                     } catch (InterruptedException ignored) {}
