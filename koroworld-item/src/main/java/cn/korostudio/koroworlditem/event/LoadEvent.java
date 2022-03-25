@@ -17,6 +17,7 @@ public class LoadEvent {
     static public void onSpawn(ServerPlayNetworkHandler handler, PacketSender sender, MinecraftServer server) {
         if(ItemSystemData.serverCaseEnable)
         ThreadUtil.execute(() -> {
+            ThreadUtil.sleep(1000);
             ItemServiceTool.downloadForServer(handler.getPlayer(), logger);
         });
     }

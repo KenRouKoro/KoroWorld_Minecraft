@@ -81,6 +81,7 @@ public class ItemServiceTool {
         String result = null;
         try {
             result = HttpUtil.post(ItemSystemData.httpServer + "/item/upload", paramMap);
+
         } catch (HttpException e) {
             e.printStackTrace();
         } finally {
