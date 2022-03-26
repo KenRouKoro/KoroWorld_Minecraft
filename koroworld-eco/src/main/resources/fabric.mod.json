@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "id": "koroworld-eco",
+  "version": "${version}",
+  "name": "Koroworld Eco",
+  "description": "Koroworld 经济系统",
+  "authors": [
+    "KenRouKoro"
+  ],
+  "contact": {
+    "website": "https://korostudio.cn"
+  },
+  "license": "MIT",
+  "icon": "assets/koroworld/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "server": [
+      "cn.korostudio.koroworldeco.KoroworldEco"
+    ]
+  },
+  "mixins": [
+    "koroworld-eco.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.13.3",
+    "fabric": "*",
+    "minecraft": "1.18.2",
+    "koroworld-core":">=1.1.0"
+  }
+}
