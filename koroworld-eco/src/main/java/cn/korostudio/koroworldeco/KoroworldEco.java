@@ -11,7 +11,8 @@ public class KoroworldEco implements DedicatedServerModInitializer {
     @Getter
     protected static Setting setting = new Setting(FileUtil.touch(System.getProperty("user.dir")+"/koroworld/config/eco.setting"), CharsetUtil.CHARSET_UTF_8,true);;
 
-    @Override    public void onInitializeServer() {
+    @Override
+    public void onInitializeServer() {
 
     }
 

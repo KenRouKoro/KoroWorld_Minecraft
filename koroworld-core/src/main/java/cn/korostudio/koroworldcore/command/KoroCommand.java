@@ -80,13 +80,11 @@ public class KoroCommand {
         if(!Data.commandEn.getBool("spawnEn",true)){
             return 1;
         }
-
         for(CommandCallBack callBack:spawnCallBacks) {
             if (!callBack.run(objectCommandContext)) {
                 return 1;
             }
         }
-
         try{
             ServerPlayerEntity player = objectCommandContext.getSource().getPlayer();
             ServerWorld overworld = Data.server.getOverworld();

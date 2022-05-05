@@ -2,8 +2,6 @@ package cn.korostudio.koroworldcore.mixin;
 
 import cn.korostudio.koroworldcore.data.Data;
 import cn.korostudio.koroworldcore.data.PlayerPOSData;
-import cn.korostudio.koroworldcore.util.MessageTool;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.Vec3d;
@@ -18,8 +16,9 @@ public abstract class PlayerTeleportMixin {
     public void onTeleport(ServerWorld targetWorld, double x, double y, double z, float yaw, float pitch, CallbackInfo ci){
         if(Data.saveTeleport){
             Vec3d vec3d =((ServerPlayerEntity)(Object)this).getPos();
-            PlayerPOSData.teleportMap.put(((ServerPlayerEntity)(Object)this).getUuidAsString(), new PlayerPOSData(vec3d.getX(), vec3d.getY(), vec3d.getZ(), ((ServerPlayerEntity)(Object)this).getUuidAsString(), targetWorld));
-            MessageTool.sendSystemMessage(((ServerPlayerEntity)(Object)this), "建议使用 /back 指令返回死亡地点。（如果死岩浆、方块、虚空里就算了XD）");
+            System.out.println(vec3d.getX()+" "+ vec3d.getY()+" "+ vec3d.getZ());
+            PlayerPOSData.teleportMap.put(((ServerPlayerEntity)(Object)this).getUuidAsString(), new PlayerPOSData(vec3d.getX(), vec3d.getY(), vec3d.getZ(), ((ServerPlayerEntity)(Object)this).getUuidAsString(),  ((ServerPlayerEntity)(Object)this).getWorld()));
+            //MessageTool.sendSystemMessage(((ServerPlayerEntity)(Object)this), "建议使用 /back 指令返回死亡地点。（如果死岩浆、方块、虚空里就算了XD）");
         }
     }
 }
