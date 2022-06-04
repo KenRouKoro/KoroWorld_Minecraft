@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "id": "koroworld-lib",
+  "version": "${version}",
+
+  "name": "KoroWorld Lib",
+  "description": "This is an example description! Tell everyone what your mod is about!",
+  "authors": [
+    "KenRouKoro"
+  ],
+  "contact": {
+    "homepage": "https://fabricmc.net/",
+    "sources": "https://github.com/FabricMC/fabric-example-mod"
+  },
+
+  "license": "MIT",
+  "icon": "assets/cn/korostudio/koroworld-lib/icon.png",
+
+  "environment": "*",
+  "entrypoints": {
+  },
+
+  "depends": {
+    "fabricloader": ">=0.14.6",
+    "fabric": "*",
+    "minecraft": "~1.18.2",
+    "java": ">=17"
+  },
+  "suggests": {
+    "another-mod": "*"
+  }
+}
