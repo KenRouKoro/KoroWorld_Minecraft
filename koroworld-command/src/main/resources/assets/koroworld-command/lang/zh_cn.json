@@ -1,0 +1,8 @@
+{
+  "koroworld.spawn.main": "传送回出生点成功~",
+  "koroworld.spawn.back": "返回上一个地点",
+  "koroworld.back.null": "您在本次轮回还没有地点记录哦~",
+  "koroworld.back.backing": "正在返回上一个关键地点......",
+  "koroworld.back.backed": "返回关键地点完成~"
+
+}

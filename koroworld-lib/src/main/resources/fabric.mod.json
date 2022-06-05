@@ -4,20 +4,19 @@
   "version": "${version}",
 
   "name": "KoroWorld Lib",
-  "description": "This is an example description! Tell everyone what your mod is about!",
+  "description": "KoroWorld Lib",
   "authors": [
     "KenRouKoro"
   ],
   "contact": {
-    "homepage": "https://fabricmc.net/",
-    "sources": "https://github.com/FabricMC/fabric-example-mod"
   },
 
   "license": "MIT",
-  "icon": "assets/cn/korostudio/koroworld-lib/icon.png",
+  "icon": "assets/cn/korostudio/koroworld/icon.png",
 
   "environment": "*",
   "entrypoints": {
+    "main": ["cn.korostudio.koroworld.lib.KoroWorldLib"]
   },
 
   "depends": {
