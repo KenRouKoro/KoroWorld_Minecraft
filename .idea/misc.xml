@@ -3,9 +3,17 @@
   <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="FrameworkDetectionExcludesConfiguration">
     <file type="web" url="file://$PROJECT_DIR$/koroworld-command" />
+    <file type="web" url="file://$PROJECT_DIR$/koroworld-connect" />
     <file type="web" url="file://$PROJECT_DIR$/koroworld-core" />
     <file type="web" url="file://$PROJECT_DIR$/koroworld-excommand" />
     <file type="web" url="file://$PROJECT_DIR$/koroworld-lib" />
+    <file type="web" url="file://$PROJECT_DIR$/koroworld-multiserver" />
+  </component>
+  <component name="JavadocGenerationManager">
+    <option name="OUTPUT_DIRECTORY" value="$PROJECT_DIR$/../../jdoc" />
+    <option name="OPTION_SCOPE" value="private" />
+    <option name="OTHER_OPTIONS" value="-encoding UTF-8 -charset UTF-8 -windowtitle &quot;test&quot;" />
+    <option name="LOCALE" value="zh_CN" />
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_17" project-jdk-name="17" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />

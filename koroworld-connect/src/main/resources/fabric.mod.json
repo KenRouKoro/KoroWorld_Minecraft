@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "id": "koroworld-connect",
+  "version": "${version}",
+
+  "name": "KoroWorld Connect",
+  "description": "This is an example description! Tell everyone what your mod is about!",
+  "authors": [
+    "KenRouKoro"
+  ],
+  "contact": {
+    "homepage": "https://fabricmc.net/",
+    "sources": "https://github.com/FabricMC/fabric-example-mod"
+  },
+
+  "license": "MIT",
+  "icon": "assets/koroworld-connect/icon.png",
+
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "cn.korostudio.koroworld.connect.KoroWorldConnect"
+    ]
+  },
+  "depends": {
+    "fabricloader": ">=0.14.6",
+    "fabric": "*",
+    "minecraft": "~1.18.2",
+    "java": ">=17"
+  },
+  "suggests": {
+    "another-mod": "*"
+  }
+}

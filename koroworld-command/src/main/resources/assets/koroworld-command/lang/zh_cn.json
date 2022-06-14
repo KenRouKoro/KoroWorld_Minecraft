@@ -1,8 +1,31 @@
 {
   "koroworld.spawn.main": "传送回出生点成功~",
-  "koroworld.spawn.back": "返回上一个地点",
+  "koroworld.spawn.back": "返回",
   "koroworld.back.null": "您在本次轮回还没有地点记录哦~",
   "koroworld.back.backing": "正在返回上一个关键地点......",
-  "koroworld.back.backed": "返回关键地点完成~"
+  "koroworld.back.backed": "返回关键地点完成~",
+  "koroworld.tpa.playernameerror": "输入的玩家名有误，请重新确认",
+  "koroworld.tpa.tphtext": "收到玩家%s传送到您当前位置的请求",
+  "koroworld.tpa.tpttext": "收到玩家%s传送您到其当前位置的请求",
+  "koroworld.tpa.sendertext": "已发送请求至玩家%s",
+  "koroworld.tpa.nulltpdataerror": "这个请求已被删除或不存在！",
+  "koroworld.tpa.timeouttpdataerror": "这个请求已经超时了！",
+  "koroworld.tpa.targetunprocesstext": "已拒绝玩家%s的传送请求",
+  "koroworld.tpa.senderunprocesstext": "玩家%s已拒绝您的传送请求",
+  "koroworld.tpa.targetprocesstext": "已同意玩家%s的传送请求，正在进行传送祷告......",
+  "koroworld.tpa.senderprocesstext": "玩家%s已同意您的传送请求,正在进行传送祷告......",
+  "koroworld.tpa.tpsuccesstext": "传送术式完成，机魂平静......",
+  "koroworld.tpa.agree": "同意",
+  "koroworld.tpa.no": "拒绝",
+  "koroworld.home.notsethometext": "您还没设置家，请先设置",
+  "koroworld.home.homenotfoundtext": "没有找到家 %s ,请确认是否输入错误",
+  "koroworld.home.maxhometext": "您已设置最大上限数量的家",
+  "koroworld.home.sethomesuccesstext": "设置家 %s 成功!",
+  "koroworld.home.removehomesuccesstext": "删除家 %s 成功!",
+  "koroworld.home.homelisttitle": "这是您当前所设置家的信息",
+  "koroworld.home.setdefhomesuccesstext": "已将 %s 设置为默认家",
+  "koroworld.home.tp": "传送",
+  "koroworld.home.delete": "删除",
+  "koroworld.home.backhomesuccesstext": "返回家 %s 成功!"
 
 }

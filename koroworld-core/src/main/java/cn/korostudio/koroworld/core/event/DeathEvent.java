@@ -8,7 +8,7 @@ public class DeathEvent {
 
     public static boolean saveDeath = true;
 
-    public static ActionResult onDeath(ServerPlayerEntity player){
+    public static ActionResult onDeath(ServerPlayerEntity player) {
 
         if (saveDeath) {
             PlayerPOSData.teleportMap.put(player.getUuidAsString(), new PlayerPOSData(player.getUuidAsString(), player.getWorld(), player.getX(), player.getY(), player.getZ(), player.getYaw(), player.getPitch()));

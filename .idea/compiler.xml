@@ -2,18 +2,7 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
-      <profile name="Gradle Imported" enabled="true">
-        <outputRelativeToContentRoot value="true" />
-        <option name="defaultObfuscationEnv" value="named:intermediary" />
-        <option name="inMapFileNamedIntermediary" value="C:\Users\16415\.gradle\caches\fabric-loom\1.18.2\net.fabricmc.yarn.1_18_2.1.18.2+build.3-v2\mappings.tiny" />
-        <option name="outMapFileNamedIntermediary" value="E:\workspace\KoroWorld2.0\koroworld-command\build\loom-cache\mixin-map-net.fabricmc.yarn.1_18_2.1.18.2+build.3-v2.main.tiny" />
-        <option name="outRefMapFile" value="E:\workspace\KoroWorld2.0\koroworld-command\build\classes\java\main\koroworld-command-refmap.json" />
-        <option name="quiet" value="true" />
-        <processorPath useClasspath="false">
-          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.projectlombok/lombok/1.18.24/13a394eed5c4f9efb2a6d956e2086f1d81e857d9/lombok-1.18.24.jar" />
-        </processorPath>
-        <module name="koroworld-command.main" />
-      </profile>
+      <profile default="true" name="Default" enabled="true" />
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="koroworld-excommand" target="17" />

@@ -7,15 +7,15 @@ import net.minecraft.util.ActionResult;
 
 public interface PlayerChatEvent {
     Event<PlayerChatEvent> EVENT = EventFactory.createArrayBacked(PlayerChatEvent.class,
-            (listeners) -> (player,text) -> {
+            (listeners) -> (player, text) -> {
                 for (PlayerChatEvent listener : listeners) {
-                    ActionResult result = listener.interact(player,text);
-                    if(result != ActionResult.PASS) {
+                    ActionResult result = listener.interact(player, text);
+                    if (result != ActionResult.PASS) {
                         return result;
                     }
                 }
                 return ActionResult.PASS;
             });
 
-    ActionResult interact(ServerPlayerEntity player,String text);
+    ActionResult interact(ServerPlayerEntity player, String text);
 }
