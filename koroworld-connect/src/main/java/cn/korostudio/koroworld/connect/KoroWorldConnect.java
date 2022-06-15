@@ -2,21 +2,21 @@ package cn.korostudio.koroworld.connect;
 
 
 import cn.hutool.core.util.StrUtil;
-import cn.korostudio.koroworld.command.Command;
+import cn.korostudio.koroworld.connect.command.Command;
 import cn.korostudio.koroworld.connect.ws.WSConnector;
 import cn.korostudio.koroworld.core.data.Data;
-import com.mojang.brigadier.CommandDispatcher;
+import io.netty.channel.unix.ServerDomainSocketChannel;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
+import net.fabricmc.api.DedicatedServerModInitializer;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.command.v1.CommandRegistrationCallback;
-import net.minecraft.server.command.ServerCommandSource;
 
 /**
  * KoroWorld Connect模块
  */
 @Slf4j(topic = "KoroWorld-Connect")
-public class KoroWorldConnect implements ModInitializer {
+public class KoroWorldConnect implements DedicatedServerModInitializer {
 
     /**
      * 连接地址
@@ -63,7 +63,7 @@ public class KoroWorldConnect implements ModInitializer {
      * Fabric默认启动方法
      */
     @Override
-    public void onInitialize() {
+    public void onInitializeServer() {
         log.info("KoroWorld-Connect Is Loading!");
         loadSetting();
         register();

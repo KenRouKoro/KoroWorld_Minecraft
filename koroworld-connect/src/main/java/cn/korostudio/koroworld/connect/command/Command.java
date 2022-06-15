@@ -1,4 +1,4 @@
-package cn.korostudio.koroworld.command;
+package cn.korostudio.koroworld.connect.command;
 
 import cn.hutool.core.thread.ThreadUtil;
 import cn.korostudio.koroworld.connect.KoroWorldConnect;

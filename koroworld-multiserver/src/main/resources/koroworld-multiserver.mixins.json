@@ -1,0 +1,16 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "cn.korostudio.koroworld.multiserver.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [
+  ],
+  "client": [
+    "MultiplayerScreenMixin",
+    "MultiplayerServerListPingerMixin",
+    "ServerEntryMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

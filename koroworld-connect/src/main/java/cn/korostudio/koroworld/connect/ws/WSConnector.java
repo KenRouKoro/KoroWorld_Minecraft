@@ -65,7 +65,7 @@ public class WSConnector {
      */
     protected static void CreatConnect(){
         try {
-            String wsURL = KoroWorldConnect.isSsl()?"wss://":"ws://" + KoroWorldConnect.getConnect()+"/ws"+"?key="+ Base62.encode(KoroWorldCore.getServerName());
+            String wsURL = KoroWorldConnect.isSsl()?"wss://":"ws://" + KoroWorldConnect.getConnect()+"/ws"+"?key="+ Base62.encode(KoroWorldConnect.SUID);
             log.info("Trying to connect to:"+wsURL);
             URI uri = new URI(wsURL);
             wsClient = new WSClient(uri);

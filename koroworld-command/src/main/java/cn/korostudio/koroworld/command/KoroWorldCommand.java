@@ -4,12 +4,13 @@ import cn.korostudio.koroworld.command.command.Command;
 import cn.korostudio.koroworld.command.data.HomeData;
 import cn.korostudio.koroworld.command.data.TPData;
 import cn.korostudio.koroworld.core.data.Data;
+import net.fabricmc.api.DedicatedServerModInitializer;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.command.v1.CommandRegistrationCallback;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class KoroWorldCommand implements ModInitializer {
+public class KoroWorldCommand implements DedicatedServerModInitializer {
 
 
     public static final Logger LOGGER = LoggerFactory.getLogger("KoroWorld-Command");
@@ -24,7 +25,7 @@ public class KoroWorldCommand implements ModInitializer {
     }
 
     @Override
-    public void onInitialize() {
+    public void onInitializeServer() {
         LOGGER.info("KoroWorld-Command Is Loaded!");
         loadSetting();
         register();
