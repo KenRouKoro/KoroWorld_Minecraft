@@ -10,6 +10,7 @@ MCMod百科用户 科洛(koro) 即为本人，MCMod百科内容与此说明具�
 3. koroworld-command 科洛的基础指令
 4. koroworld-connect 科洛的核心连接
 5. koroworld-multiserver 科洛的群组
+6. koroworld-itemsyn 科洛物品同步
 ## 使用方法
 
 前往Github下载发行版，加入mods文件夹即可。
@@ -33,4 +34,4 @@ MCMod百科用户 科洛(koro) 即为本人，MCMod百科内容与此说明具�
 ## 版本对应列表
 
 1.18.x 2.0
-1.19.x 2.0
+1.19.x 2.1 (In Future)
