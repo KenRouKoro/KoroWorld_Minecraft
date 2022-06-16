@@ -70,7 +70,7 @@ public class ClientConnectTool {
 
         try {
             backStr = HttpUtil.post("http://"+address+"/client/process",map,1000);
-        }catch (HttpException e){
+        }catch (Exception e){
             return JSONUtil.parseObj("{\"status\":false}");
         }
 
@@ -85,13 +85,15 @@ public class ClientConnectTool {
     @Environment(EnvType.CLIENT)
     public static JSONObject getDefAddress(String address){
 
-        String backStr;
+        JSONObject backStrObj;
         try {
-            backStr = HttpUtil.get("http://" + address + "/client/default", 1000);
-        }catch (HttpException e){
+            String backStr = HttpUtil.get("http://" + address + "/client/default", 1000);
+            backStrObj = JSONUtil.parseObj(backStr);
+        }catch (Exception e){
             return JSONUtil.parseObj("{\"status\":false}");
         }
-        return JSONUtil.parseObj(backStr);
+
+        return backStrObj;
     }
 
     /**
@@ -111,7 +113,7 @@ public class ClientConnectTool {
         String backStr ;
         try {
             backStr = HttpUtil.post("http://"+address+"/client/process",map,1000);
-        }catch (HttpException e){
+        }catch (Exception e){
             return JSONUtil.parseObj("{\"status\":false}");
         }
 

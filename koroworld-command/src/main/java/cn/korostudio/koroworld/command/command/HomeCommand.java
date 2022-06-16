@@ -9,6 +9,7 @@ import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import lombok.extern.slf4j.Slf4j;
+import net.minecraft.command.argument.MessageArgumentType;
 import net.minecraft.server.command.ServerCommandSource;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
@@ -53,7 +54,7 @@ public class HomeCommand {
     public static int homeWithName(CommandContext<ServerCommandSource> server) {
         try {
             ServerPlayerEntity player = server.getSource().getPlayer();
-            String homeNameStr = StringArgumentType.getString(server, "name");
+            String homeNameStr = MessageArgumentType.getMessage(server, "name").asString();
 
             HomeData homeData = HomeData.HOMEDATA.get(player.getUuidAsString());
             if (homeData == null) {
@@ -96,7 +97,7 @@ public class HomeCommand {
     public static int setHome(CommandContext<ServerCommandSource> server) {
         try {
             ServerPlayerEntity player = server.getSource().getPlayer();
-            String homeNameStr = StringArgumentType.getString(server, "name");
+            String homeNameStr = MessageArgumentType.getMessage(server, "name").asString();
 
             HomeData homeData = HomeData.HOMEDATA.get(player.getUuidAsString());
             if (homeData == null) {
@@ -127,7 +128,7 @@ public class HomeCommand {
     public static int removeHome(CommandContext<ServerCommandSource> server) {
         try {
             ServerPlayerEntity player = server.getSource().getPlayer();
-            String homeNameStr = StringArgumentType.getString(server, "name");
+            String homeNameStr = MessageArgumentType.getMessage(server, "name").asString();
             HomeData homeData = HomeData.HOMEDATA.get(player.getUuidAsString());
             if (homeData == null) {
                 MutableText notSetHomeText = new TranslatableText("koroworld.home.notsethometext");
@@ -196,7 +197,7 @@ public class HomeCommand {
     public static int setDefHome(CommandContext<ServerCommandSource> server) {
         try {
             ServerPlayerEntity player = server.getSource().getPlayer();
-            String homeNameStr = StringArgumentType.getString(server, "name");
+            String homeNameStr = MessageArgumentType.getMessage(server, "name").asString();
             HomeData homeData = HomeData.HOMEDATA.get(player.getUuidAsString());
             if (homeData == null) {
                 MutableText notSetHomeText = new TranslatableText("koroworld.home.notsethometext");

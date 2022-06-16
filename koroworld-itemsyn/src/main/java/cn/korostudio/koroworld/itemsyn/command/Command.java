@@ -37,6 +37,13 @@ public class Command {
                                                     .requires(serverCommandSource -> serverCommandSource.hasPermissionLevel(2))
                                                     .executes(Command::updatePlayer)
                                     )
+                    ).then(
+                            literal("downloadAll").requires(serverCommandSource -> serverCommandSource.hasPermissionLevel(2))
+                                    .executes(Command::downloadAll)
+                    ).then(
+                            literal("download").requires(serverCommandSource -> serverCommandSource.hasPermissionLevel(2))
+                                    .then(argument("player",EntityArgumentType.player()))
+                                    .executes(Command::download)
                     )
             );
         }
@@ -61,10 +68,39 @@ public class Command {
         return 1;
     }
 
+    public static int downloadAll(CommandContext<ServerCommandSource> server){
+        List<ServerPlayerEntity> players = Data.server.getPlayerManager().getPlayerList();
+        for(ServerPlayerEntity player:players){
+            downloadPlayer(player);
+        }
+        return 1;
+    }
+    public static int download(CommandContext<ServerCommandSource> server) throws CommandSyntaxException {
+        ServerPlayerEntity player = EntityArgumentType.getPlayer(server,"player");
+        downloadPlayer(player);
+        return 1;
+    }
+
     public static int updatePlayer(CommandContext<ServerCommandSource> server) throws CommandSyntaxException {
         ServerPlayerEntity player = EntityArgumentType.getPlayer(server,"player");
         updatePlayer(player);
         return 1;
+    }
+
+    protected static void downloadPlayer(ServerPlayerEntity player){
+        String UUID = player.getUuidAsString();
+        ThreadUtil.execute(()->{
+            ThreadUtil.sleep(Data.KoroWorldConfig.getLong("SynDelay","itemsyn",1000L));
+            String Key = "PlayerItemData-"+ Data.KoroWorldConfig.getStr("GroupName","itemsyn","koroworld")+"-"+UUID;
+            String data = DataAPI.getData(Key,true);
+            if(data==null){
+                MessageTool.Say(player,new TranslatableText("koroworld.itemsyn.downloadfail"));
+                return;
+            }
+            ItemTool.setPlayerItem(player,data);
+            MessageTool.Say(player,new TranslatableText("koroworld.itemsyn.downloadsuccess"));
+        });
+
     }
 
     protected static void updatePlayer(ServerPlayerEntity player){
@@ -75,10 +111,10 @@ public class Command {
             String data = ItemTool.getPlayerItem(player);
             boolean status = JSONUtil.parseObj(DataAPI.saveData(Key,data,true)).getBool("status",false);
             if(status){
-                MessageTool.Say(player,new TranslatableText("koroworld.itemsyn.downloadsuccess"));
+                MessageTool.Say(player,new TranslatableText("koroworld.itemsyn.updatesuccess"));
 
             }else {
-                MessageTool.Say(player,new TranslatableText("koroworld.itemsyn.downloadfail"));
+                MessageTool.Say(player,new TranslatableText("koroworld.itemsyn.updatefail"));
             }
 
         });

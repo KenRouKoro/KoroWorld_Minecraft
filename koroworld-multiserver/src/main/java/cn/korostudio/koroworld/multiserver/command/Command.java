@@ -15,6 +15,7 @@ import lombok.extern.slf4j.Slf4j;
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.command.argument.EntityArgumentType;
+import net.minecraft.command.argument.MessageArgumentType;
 import net.minecraft.server.command.ServerCommandSource;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.text.*;
@@ -30,8 +31,8 @@ public class Command {
     public static void register(CommandDispatcher<ServerCommandSource> server, boolean b) {
 
         if(Data.commandEn.getBool("serverEN",true)) {
-            server.register(literal("server").requires(serverCommandSource -> serverCommandSource.hasPermissionLevel(Data.KoroWorldConfig.getInt("serverCommandLevel","multiserver",0))).executes(Command::server).then(argument("server", StringArgumentType.string()).requires(serverCommandSource -> serverCommandSource.hasPermissionLevel(Data.KoroWorldConfig.getInt("playerTeleportCommandLevel","multiserver",0))).executes(Command::sendPlayer)));
-            server.register(literal("connectServer").then(argument("player", EntityArgumentType.player()).then(argument("server", StringArgumentType.string()).requires(serverCommandSource -> serverCommandSource.hasPermissionLevel(Data.KoroWorldConfig.getInt("serverTeleportCommandLevel","multiserver",2))).executes(Command::process))));
+            server.register(literal("server").requires(serverCommandSource -> serverCommandSource.hasPermissionLevel(Data.KoroWorldConfig.getInt("serverCommandLevel","multiserver",0))).executes(Command::server).then(argument("server", MessageArgumentType.message()).requires(serverCommandSource -> serverCommandSource.hasPermissionLevel(Data.KoroWorldConfig.getInt("playerTeleportCommandLevel","multiserver",0))).executes(Command::sendPlayer)));
+            server.register(literal("connectServer").then(argument("player", EntityArgumentType.player()).then(argument("server",MessageArgumentType.message()).requires(serverCommandSource -> serverCommandSource.hasPermissionLevel(Data.KoroWorldConfig.getInt("serverTeleportCommandLevel","multiserver",2))).executes(Command::process))));
         }
     }
 
@@ -67,7 +68,7 @@ public class Command {
         return 1;
     }
 
-    public static int sendPlayer(CommandContext<ServerCommandSource> server){
+    public static int sendPlayer(CommandContext<ServerCommandSource> server) throws CommandSyntaxException {
         ServerPlayerEntity player = null ;
         try{
             player = server.getSource().getPlayer();
@@ -78,7 +79,7 @@ public class Command {
 
         String servername = null;
 
-        servername = StringArgumentType.getString(server,"server");
+        servername = MessageArgumentType.getMessage(server,"server").asString();
 
         if (servername==null){
             if (player!=null)MessageTool.Say(player ,new TranslatableText("koroworld.ms.servernameerror").setStyle(Style.EMPTY.withColor(Formatting.RED)));
@@ -93,7 +94,7 @@ public class Command {
         return 1;
     }
 
-    public static int process(CommandContext<ServerCommandSource> server){
+    public static int process(CommandContext<ServerCommandSource> server) throws CommandSyntaxException {
         ServerPlayerEntity player = null ;
         try{
             player = server.getSource().getPlayer();
@@ -110,7 +111,7 @@ public class Command {
 
         String servername = null;
 
-        servername = StringArgumentType.getString(server,"server");
+        servername = MessageArgumentType.getMessage(server,"server").asString();
 
         if (servername==null){
             if (player!=null)MessageTool.Say(player ,new TranslatableText("koroworld.ms.servernameerror").setStyle(Style.EMPTY.withColor(Formatting.RED)));

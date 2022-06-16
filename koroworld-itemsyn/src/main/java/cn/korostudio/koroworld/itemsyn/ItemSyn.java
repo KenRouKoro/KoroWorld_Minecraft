@@ -21,40 +21,41 @@ public class ItemSyn implements DedicatedServerModInitializer {
     @Override
     public void onInitializeServer() {
         register();
-        log.info("KoroWorld ItemSyn Loaded!");
+        log.info("KoroWorld-ItemSyn Loaded!");
     }
     protected static void register(){
-        ServerPlayConnectionEvents.JOIN.register((handler, sender, server) -> {
-            ServerPlayerEntity player = handler.getPlayer();
-            String UUID = player.getUuidAsString();
-            ThreadUtil.execute(()->{
-                ThreadUtil.sleep(Data.KoroWorldConfig.getLong("SynDelay","itemsyn",1000L));
-                String Key = "PlayerItemData-"+ Data.KoroWorldConfig.getStr("GroupName","itemsyn","koroworld")+"-"+UUID;
-                String data = DataAPI.getData(Key,true);
-                if(data==null){
-                    MessageTool.Say(player,new TranslatableText("koroworld.itemsyn.downloadfail"));
-                    return;
-                }
-                ItemTool.setPlayerItem(player,data);
-                MessageTool.Say(player,new TranslatableText("koroworld.itemsyn.downloadsuccess"));
-            });
+        if(Data.KoroWorldConfig.getBool("autoDownload","itemsyn",true)) {
+            ServerPlayConnectionEvents.JOIN.register((handler, sender, server) -> {
+                ServerPlayerEntity player = handler.getPlayer();
+                String UUID = player.getUuidAsString();
+                ThreadUtil.execute(() -> {
+                    ThreadUtil.sleep(Data.KoroWorldConfig.getLong("SynDelay", "itemsyn", 1000L));
+                    String Key = "PlayerItemData-" + Data.KoroWorldConfig.getStr("GroupName", "itemsyn", "koroworld") + "-" + UUID;
+                    String data = DataAPI.getData(Key, true);
+                    if (data == null) {
+                        return;
+                    }
+                    ItemTool.setPlayerItem(player, data);
+                    MessageTool.Say(player, new TranslatableText("koroworld.itemsyn.downloadsuccess"));
+                });
 
-        });
-        ServerPlayConnectionEvents.DISCONNECT.register((handler, server) -> {
-            ServerPlayerEntity player = handler.getPlayer();
-            String UUID = player.getUuidAsString();
-            ThreadUtil.execute(()->{
-                String Key = "PlayerItemData-"+ Data.KoroWorldConfig.getStr("GroupName","itemsyn","koroworld")+"-"+UUID;
-
-                String data = ItemTool.getPlayerItem(player);
-                boolean status = JSONUtil.parseObj(DataAPI.saveData(Key,data,true)).getBool("status",false);
-                if(!status){
-                    MessageTool.Say(player,new TranslatableText("koroworld.itemsyn.downloadfail"));
-                    return;
-                }
-                MessageTool.Say(player,new TranslatableText("koroworld.itemsyn.downloadsuccess"));
             });
-        });
+        }
+        if(Data.KoroWorldConfig.getBool("autoUpdate","itemsyn",true)) {
+            ServerPlayConnectionEvents.DISCONNECT.register((handler, server) -> {
+                ServerPlayerEntity player = handler.getPlayer();
+                String UUID = player.getUuidAsString();
+                ThreadUtil.execute(() -> {
+                    String Key = "PlayerItemData-" + Data.KoroWorldConfig.getStr("GroupName", "itemsyn", "koroworld") + "-" + UUID;
+
+                    String data = ItemTool.getPlayerItem(player);
+                    boolean status = JSONUtil.parseObj(DataAPI.saveData(Key, data, true)).getBool("status", false);
+                    if (!status) {
+                        log.error("UUID:" + UUID + " 数据上传失败！");
+                    }
+                });
+            });
+        }
         CommandRegistrationCallback.EVENT.register(Command::register);
     }
 }

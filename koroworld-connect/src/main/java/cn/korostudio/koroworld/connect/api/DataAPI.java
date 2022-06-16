@@ -157,7 +157,13 @@ public class DataAPI {
     public static String sendToHttp(JSONObject dataPack){
         Map<String ,Object> data  = new HashMap<>();
         data.put("data",dataPack.toString());
-        return HttpUtil.post(KoroWorldConnect.isSsl()?"https://":"http://"+KoroWorldConnect.getConnect()+"/data/process",data,10000);
+        String back = null;
+        try {
+            back = HttpUtil.post(KoroWorldConnect.isSsl() ? "https://" : "http://" + KoroWorldConnect.getConnect() + "/data/process", data, 10000);
+        }catch (Exception e){
+            return null;
+        }
+        return back;
     }
 
     /**
