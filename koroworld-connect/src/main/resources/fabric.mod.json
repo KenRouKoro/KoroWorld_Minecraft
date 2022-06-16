@@ -4,13 +4,13 @@
   "version": "${version}",
 
   "name": "KoroWorld Connect",
-  "description": "This is an example description! Tell everyone what your mod is about!",
+  "description": "科洛服务核心连接工具套件",
   "authors": [
     "KenRouKoro"
   ],
   "contact": {
-    "homepage": "https://fabricmc.net/",
-    "sources": "https://github.com/FabricMC/fabric-example-mod"
+    "homepage": "https://korostudio.cn",
+    "sources": "https://github.com/KenRouKoro/KoroWorld_Minecraft/tree/2.0.0"
   },
 
   "license": "MIT",

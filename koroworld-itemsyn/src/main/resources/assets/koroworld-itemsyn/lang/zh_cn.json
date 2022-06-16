@@ -1,0 +1,6 @@
+{
+  "koroworld.itemsyn.downloadsuccess": "背包同步成功",
+  "koroworld.itemsyn.updatesuccess": "背包上传成功",
+  "koroworld.itemsyn.updatefail": "背包上传失败",
+  "koroworld.itemsyn.downloadfail": "背包同步失败"
+}

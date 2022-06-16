@@ -165,7 +165,7 @@ public class DataAPI {
      * @param tags String 标签
      * @param data String  储存的数据
      * @param http boolean 传输模式
-     * @return String  UUID
+     * @return String  UUID , Http模式为服务器返回
      */
     public static String saveData(String tags,String data,boolean http){
         SaveDataPack saveDataPack = new SaveDataPack();
@@ -188,7 +188,7 @@ public class DataAPI {
         });
 
         if(http){
-            sendToHttp(JSONUtil.parseObj(saveDataPack));
+            return sendToHttp(JSONUtil.parseObj(saveDataPack));
         }else{
             sendToWS(JSONUtil.parseObj(saveDataPack));
         }

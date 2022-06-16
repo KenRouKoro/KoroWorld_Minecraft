@@ -4,13 +4,13 @@
   "version": "${version}",
 
   "name": "KoroWorld Command",
-  "description": "This is an example description! Tell everyone what your mod is about!",
+  "description": "科洛指令模块",
   "authors": [
     "KenRouKoro"
   ],
   "contact": {
-    "homepage": "https://fabricmc.net/",
-    "sources": "https://github.com/FabricMC/fabric-example-mod"
+    "homepage": "https://korostudio.cn",
+    "sources": "https://github.com/KenRouKoro/KoroWorld_Minecraft/tree/2.0.0"
   },
 
   "license": "MIT",
@@ -18,7 +18,7 @@
 
   "environment": "*",
   "entrypoints": {
-    "main": [
+    "server": [
       "cn.korostudio.koroworld.command.KoroWorldCommand"
     ]
   },

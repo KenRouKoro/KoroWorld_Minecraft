@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "id": "koroworld-itemsyn",
+  "version": "${version}",
+  "name": "ItemSyn",
+  "description": "科洛物品同步，这个Mod只在服务器工作，客户端装了只能提供语言文件。",
+  "authors": [
+    "KenRouKoro"
+  ],
+  "contact": {
+    "website": "https://korostudio.cn",
+    "homepage": "https://korostudio.cn",
+    "sources": "https://github.com/KenRouKoro/KoroWorld_Minecraft/tree/2.0.0"
+  },
+  "license": "MIT",
+  "icon": "assets/koroworld-itemsyn/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "server": [
+      "cn.korostudio.koroworld.itemsyn.ItemSyn"
+    ]
+  },
+  "mixins": [
+    "ItemSyn.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.14.7",
+    "fabric": "*",
+    "minecraft": "1.18.2"
+  }
+}

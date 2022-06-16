@@ -19,6 +19,7 @@ public class ServerConnectTool {
         SetPlayerServerStatus(player.getUuidAsString().replace("-",""));
     }
     public static void SetPlayerServerStatus(String playerUUID){
+        playerUUID=playerUUID.replace("-","");
         JSONObject servers = getServerList();
         String server = KoroWorldConnect.SUID;
         if(servers.getStr(server)==null){
@@ -54,6 +55,7 @@ public class ServerConnectTool {
     }
     public static void SetPlayerNextServer(String playerUUID,String server){
         JSONObject servers = getServerList();
+        playerUUID=playerUUID.replace("-","");
         if(servers.getStr(server)==null){
             throw new StatefulException("NullServer","Server does not exist!");
         }
