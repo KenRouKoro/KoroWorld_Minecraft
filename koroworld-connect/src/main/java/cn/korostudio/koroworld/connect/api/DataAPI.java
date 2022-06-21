@@ -159,7 +159,7 @@ public class DataAPI {
         data.put("data",dataPack.toString());
         String back = null;
         try {
-            back = HttpUtil.post(KoroWorldConnect.isSsl() ? "https://" : "http://" + KoroWorldConnect.getConnect() + "/data/process", data, 10000);
+            back = HttpUtil.post( "http://" + KoroWorldConnect.getConnect() + "/data/process", data, 10000);
         }catch (Exception e){
             return null;
         }

@@ -4,6 +4,7 @@
   <component name="FrameworkDetectionExcludesConfiguration">
     <file type="web" url="file://$PROJECT_DIR$/koroworld-command" />
     <file type="web" url="file://$PROJECT_DIR$/koroworld-connect" />
+    <file type="web" url="file://$PROJECT_DIR$/koroworld-connect-kubejs" />
     <file type="web" url="file://$PROJECT_DIR$/koroworld-core" />
     <file type="web" url="file://$PROJECT_DIR$/koroworld-excommand" />
     <file type="web" url="file://$PROJECT_DIR$/koroworld-itemsyn" />

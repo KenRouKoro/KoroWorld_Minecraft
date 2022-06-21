@@ -1,0 +1,1 @@
+cn.korostudio.koroworld.koroworldconnectkubejs.KoroWorldConnectKubejsPlugin
