@@ -6,7 +6,11 @@
   "mixins": [
     "PlayerChatMixin",
     "PlayerDeathMixin",
-    "PlayerTeleportMixin"
+    "PlayerTeleportMixin",
+    "authlib.EnvironmentParserMixin",
+    "authlib.YggdrasilAuthenticationServiceMixin",
+    "authlib.YggdrasilEnvironmentMixin",
+    "authlib.YggdrasilMinecraftSessionServiceMixin"
   ],
   "client": [
   ],

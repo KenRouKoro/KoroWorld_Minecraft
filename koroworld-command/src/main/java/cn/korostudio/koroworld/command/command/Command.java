@@ -4,6 +4,7 @@ import cn.korostudio.koroworld.core.data.Data;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.StringArgumentType;
 import net.minecraft.command.argument.EntityArgumentType;
+import net.minecraft.command.argument.MessageArgumentType;
 import net.minecraft.server.command.CommandManager;
 import net.minecraft.server.command.ServerCommandSource;
 
@@ -23,10 +24,10 @@ public class Command {
         }
 
         if (Data.commandEn.getBool("homeEN", true)) {
-            server.register(literal("home").executes(HomeCommand::home).then(CommandManager.argument("name", StringArgumentType.word()).executes(HomeCommand::homeWithName)));
-            server.register(literal("sethome").then(CommandManager.argument("name", StringArgumentType.word()).executes(HomeCommand::setHome)));
-            server.register(literal("removehome").then(CommandManager.argument("name", StringArgumentType.word()).executes(HomeCommand::removeHome)));
-            server.register(literal("setdefhome").then(CommandManager.argument("name", StringArgumentType.word()).executes(HomeCommand::setDefHome)));
+            server.register(literal("home").executes(HomeCommand::home).then(CommandManager.argument("name", MessageArgumentType.message()).executes(HomeCommand::homeWithName)));
+            server.register(literal("sethome").then(CommandManager.argument("name", MessageArgumentType.message()).executes(HomeCommand::setHome)));
+            server.register(literal("removehome").then(CommandManager.argument("name", MessageArgumentType.message()).executes(HomeCommand::removeHome)));
+            server.register(literal("setdefhome").then(CommandManager.argument("name", MessageArgumentType.message()).executes(HomeCommand::setDefHome)));
             server.register(literal("homelist").executes(HomeCommand::homeList));
         }
     }

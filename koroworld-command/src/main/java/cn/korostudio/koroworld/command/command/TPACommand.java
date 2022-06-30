@@ -115,7 +115,7 @@ public class TPACommand {
                 ServerPlayerEntity from = tpData.getFrom();
                 tpData.getTarget().teleport(from.getWorld(), from.getX(), from.getY(), from.getZ(), from.getYaw(), from.getPitch());
             } else {
-                ServerPlayerEntity target = tpData.getFrom();
+                ServerPlayerEntity target = tpData.getTarget();
                 tpData.getFrom().teleport(target.getWorld(), target.getX(), target.getY(), target.getZ(), target.getYaw(), target.getPitch());
             }
             MutableText tpSuccessText = new TranslatableText("koroworld.tpa.tpsuccesstext");
