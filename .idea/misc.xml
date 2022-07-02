@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$/chatsyn" />
+    <file type="web" url="file://$PROJECT_DIR$/koroworld-chatsyn" />
     <file type="web" url="file://$PROJECT_DIR$/koroworld-command" />
     <file type="web" url="file://$PROJECT_DIR$/koroworld-connect" />
     <file type="web" url="file://$PROJECT_DIR$/koroworld-connect-kubejs" />

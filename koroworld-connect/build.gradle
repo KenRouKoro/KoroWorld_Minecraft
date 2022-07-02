@@ -34,7 +34,7 @@ dependencies {
 	//compileOnly 'org.projectlombok:lombok:1.18.24'
 	//apt 'org.projectlombok:lombok:1.18.24'
 	implementation 'org.java-websocket:Java-WebSocket:1.5.3'
-	implementation 'cn.korostudio:koroworld-core:2.0.0'
+	modImplementation 'cn.korostudio:koroworld-core:2.0.2'
 }
 
 processResources {

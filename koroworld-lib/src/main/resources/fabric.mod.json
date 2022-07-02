@@ -4,7 +4,7 @@
   "version": "${version}",
 
   "name": "KoroWorld Lib",
-  "description": "KoroWorld Lib",
+  "description": "科洛的Lib库,桥接支持Hutool与Java WebSocket",
   "authors": [
     "KenRouKoro"
   ],

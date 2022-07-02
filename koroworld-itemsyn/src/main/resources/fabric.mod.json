@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "id": "koroworld-itemsyn",
   "version": "${version}",
-  "name": "ItemSyn",
+  "name": "KoroWorld ItemSyn",
   "description": "科洛物品同步，这个Mod只在服务器工作，客户端装了只能提供语言文件。",
   "authors": [
     "KenRouKoro"

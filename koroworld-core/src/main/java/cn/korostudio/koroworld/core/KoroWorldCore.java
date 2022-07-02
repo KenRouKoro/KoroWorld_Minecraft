@@ -6,6 +6,7 @@ import cn.korostudio.koroworld.core.event.DeathEvent;
 import cn.korostudio.koroworld.core.event.TeleportEvent;
 import cn.korostudio.koroworld.core.event.interfaces.PlayerDeathEvent;
 import cn.korostudio.koroworld.core.event.interfaces.PlayerTeleportEvent;
+import cn.korostudio.koroworld.core.util.MessageTool;
 import lombok.Getter;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
@@ -29,7 +30,10 @@ public class KoroWorldCore implements ModInitializer {
     protected static void loadSetting() {
         systemName = Data.KoroWorldConfig.getStr("systemname", "core", "小祥凤");
         serverName = Data.KoroWorldConfig.getStr("servername", "core", "KoroWorld");
-
+        MessageTool.setTimeTemplate(Data.KoroWorldConfig.getStr("TimeTemplate","core","yyyy-MM-dd HH:mm:ss"));
+        MessageTool.setDateTemplate(Data.KoroWorldConfig.getStr("DateTemplate","core","yyyy年MM月dd日"));
+        MessageTool.setChatTemplate(Data.KoroWorldConfig.getStr("ChatTemplate","core","§6<{serverName}>§b<{player}>§f{text}"));
+        MessageTool.setSystemTemplate(Data.KoroWorldConfig.getStr("SystemTemplate","core","§6<{systemName}>{text}"));
     }
 
     @Override
@@ -41,6 +45,7 @@ public class KoroWorldCore implements ModInitializer {
         Data.KoroWorldConfig.autoLoad(true);
         loadSetting();
         register();
+        MessageTool.Init();
         CronUtil.setMatchSecond(true);
         CronUtil.start();
     }
