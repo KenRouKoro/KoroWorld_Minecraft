@@ -12,6 +12,7 @@ MCMod百科用户 科洛(koro) 即为本人，MCMod百科内容与此说明具�
 5. koroworld-multiserver 科洛的群组
 6. koroworld-itemsyn 科洛物品同步
 7. koroworld-chatsyn 科洛聊天同步
+8. koroworld-kubejs 科洛系列mod与Kubejs接口
 ## 使用方法
 
 前往Github下载发行版，加入mods文件夹。
