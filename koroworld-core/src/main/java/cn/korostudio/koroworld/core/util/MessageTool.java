@@ -62,7 +62,7 @@ public class MessageTool {
         if(Data.KoroWorldConfig.getBool("TemplateEN","core",false)){
             KoroWorldCore.cancelChat = true;
             PlayerChatEvent.EVENT.register((player, text) -> {
-                Chat(player.getDisplayName().asString(),text,player.getUuid(), ProcessValues(StaticTemplateValues,player));
+                Chat(player.getName().asString(),text,player.getUuid(), ProcessValues(StaticTemplateValues,player));
                 return ActionResult.PASS ;
             });
             RegisterDefMessageTemplateValueProcessor();
@@ -72,6 +72,9 @@ public class MessageTool {
         MessageTemplateValueProcessors.add((map,player)->{
             map.put("time", DateTime.now().toString(timeTemplate));
             map.put("date", DateTime.now().toString(dateTemplate));
+            if (player!=null){
+                map.put("player", player.getName().asString());
+            }
         });
         BroadcastProcessors.add((sendText, uuid) -> {
             return new LiteralText("§6<"+KoroWorldCore.getSystemName()+">").append(sendText);
@@ -111,7 +114,7 @@ public class MessageTool {
         if(useTemplate){
             text = StrUtil.format(text,values);
             values.put("text",text);
-            String showChatText = StrUtil.format(text,values);
+            String showChatText = StrUtil.format(ChatTemplate,values);
             Data.server.getPlayerManager().broadcast(new LiteralText(showChatText),MessageType.CHAT,uuid);
         }else{
             Data.server.getPlayerManager().broadcast(new TranslatableText("chat.type.text", playerName, text), MessageType.CHAT, uuid );

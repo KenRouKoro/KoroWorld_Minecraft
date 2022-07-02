@@ -5,7 +5,6 @@ import cn.hutool.json.JSONUtil;
 import cn.korostudio.koroworld.chatsyn.ChatSyn;
 import cn.korostudio.koroworld.chatsyn.data.ChatDataPack;
 import cn.korostudio.koroworld.connect.api.DataPackListener;
-import cn.korostudio.koroworld.core.KoroWorldCore;
 import cn.korostudio.koroworld.core.util.MessageTool;
 
 import java.util.Map;
@@ -20,7 +19,8 @@ public class ChatDataPackProcessor extends DataPackListener {
             return;
         }
         Map<String,String> values = MessageTool.ProcessValues(MessageTool.getStaticTemplateValues(),null);
-        values.put("serverName",chatDataPack.getServerName());
+        values.put("ServerName",chatDataPack.getServerName());
+        values.put("player",chatDataPack.getPlayerName());
         MessageTool.Chat(chatDataPack.getPlayerName(),chatDataPack.getData(), UUID.fromString(chatDataPack.getPlayerUUID()),values);
     }
 

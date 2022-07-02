@@ -30,10 +30,10 @@ public class KoroWorldCore implements ModInitializer {
     protected static void loadSetting() {
         systemName = Data.KoroWorldConfig.getStr("systemname", "core", "小祥凤");
         serverName = Data.KoroWorldConfig.getStr("servername", "core", "KoroWorld");
-        MessageTool.setTimeTemplate(Data.KoroWorldConfig.getStr("TimeTemplate","core","yyyy-MM-dd HH:mm:ss"));
+        MessageTool.setTimeTemplate(Data.KoroWorldConfig.getStr("TimeTemplate","core","HH:mm:ss"));
         MessageTool.setDateTemplate(Data.KoroWorldConfig.getStr("DateTemplate","core","yyyy年MM月dd日"));
-        MessageTool.setChatTemplate(Data.KoroWorldConfig.getStr("ChatTemplate","core","§6<{serverName}>§b<{player}>§f{text}"));
-        MessageTool.setSystemTemplate(Data.KoroWorldConfig.getStr("SystemTemplate","core","§6<{systemName}>{text}"));
+        MessageTool.setChatTemplate(Data.KoroWorldConfig.getStr("ChatTemplate","core","§6<{ServerName}>§b<§b{player}§b>§f{text}"));
+        MessageTool.setSystemTemplate(Data.KoroWorldConfig.getStr("SystemTemplate","core","§6<{SystemName}>{text}"));
     }
 
     @Override

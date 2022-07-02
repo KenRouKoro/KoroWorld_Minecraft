@@ -11,6 +11,7 @@ MCMod百科用户 科洛(koro) 即为本人，MCMod百科内容与此说明具�
 4. koroworld-connect 科洛的核心连接
 5. koroworld-multiserver 科洛的群组
 6. koroworld-itemsyn 科洛物品同步
+7. koroworld-chatsyn 科洛聊天同步
 ## 使用方法
 
 前往Github下载发行版，加入mods文件夹。
@@ -32,6 +33,16 @@ MCMod百科用户 科洛(koro) 即为本人，MCMod百科内容与此说明具�
 systemname = 小祥凤
 #服务器名称，这里是预留的，只有以后的模板系统会使用
 servername = KoroWorld
+#时间模板
+TimeTemplate = HH:mm:ss
+#日期模板
+DateTemplate = yyyy年MM月dd日
+#聊天模板
+ChatTemplate = §6<{ServerName}>§b<§b{player}§b>§f{text}
+#系统信息模板
+SystemTemplate = §6<{ServerName}>§b<§b{player}§b>§f{text}
+#模板系统使能
+TemplateEN = false
 
 [command]
 #tpa超时，单位为秒
@@ -60,6 +71,9 @@ PlayerUpdateLevel = 0
 autoUpdate = true
 #自动下载玩家数据开关
 autoDownload = true
+[chatsyn]
+#聊天消息分组
+Group = KoroWorld
 
 [multiserver]
 #玩家自行跳转服务器指令执行权限，调高即可阻止玩家自行跳转服务器
